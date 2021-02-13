@@ -12,19 +12,20 @@ class Solver(BaseSolver):
 
     def run(self, n_iter):
         n_samples, n_features = self.X.shape
-        w = np.zeros(n_features)
 
         L = (np.linalg.norm(self.X) ** 2 / 4) + self.lmbd
         step = 1. / L
 
-        t_new = 1
+        X, y, lmbd = self.X, self.y, self.lmbd
+
+        w = np.zeros(n_features)
         for i in range(n_iter):
-            w -= step * self.grad_logreg_l2(w, self.X, self.y, self.lmbd) # GD step
+            ywTx = y * np.dot(X, w)
+            temp = 1. / (1. + np.exp(ywTx))
+            grad = -np.dot(X.T, (y * temp)) + lmbd * w
+            w -= step * grad
 
         self.w = w
-
-    def grad_logreg_l2(self, w, X, y, lmbd):
-        return (-y * X.T @ (1. / (1. + np.exp(y * (X @ w)))) / X.shape[0]) + lmbd * w
 
     def get_result(self):
         return self.w
