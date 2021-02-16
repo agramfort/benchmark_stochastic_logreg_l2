@@ -1,5 +1,5 @@
-Benchmark repository for L2-regularized Logistic Regression
-===========================================================
+Benchmark repository for Stochastic L2-regularized Logistic Regression
+======================================================================
 
 |Build Status| |Python 3.6+|
 
