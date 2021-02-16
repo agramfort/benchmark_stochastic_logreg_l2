@@ -13,7 +13,7 @@ class Solver(BaseSolver):
     def run(self, n_iter):
         n_samples, n_features = self.X.shape
 
-        L = (np.linalg.norm(self.X) ** 2 / 4) + self.lmbd
+        L = (np.linalg.norm(self.X, ord=2) ** 2 / 4) + self.lmbd
         step = 1. / L
 
         X, y, lmbd = self.X, self.y, self.lmbd

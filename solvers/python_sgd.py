@@ -1,4 +1,4 @@
-import math as m
+import math
 import numpy as np
 
 
@@ -39,9 +39,9 @@ class Solver(BaseSolver):
         n_samples, _ = X.shape
 
         for i in range(n_iter):
-            # When n_iter is NOT known in advance:
+            # Pick one sample at random
             idx = np.random.choice(n_samples)
-            step = step_init / m.sqrt(1 + i)
+            step = step_init / math.sqrt(1 + i)
 
             # SGD step
             w -= step * (

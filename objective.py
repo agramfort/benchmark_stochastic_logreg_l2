@@ -5,7 +5,7 @@ from benchopt.base import BaseObjective
 
 
 class Objective(BaseObjective):
-    name = "L2 Logistic Regression Stochastic"
+    name = "Stochastic L2 Logistic Regression"
 
     parameters = {
         'lmbd': [1., 0.01]
